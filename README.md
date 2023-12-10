@@ -1,5 +1,34 @@
-# Leetcode-Problem-Solution
+# Leetcode Weekly Round 375
 
+a. solution: you just need to traverse the whole array from left to right.
+check the condition: nums[i] - previousTestedDevices > 0 
+    then increment the previousTestedDevices.
+Finally the answer will be previousTestDevices.
+
+source code:
+```
+
+class Solution {
+public:
+    int countTestedDevices(vector<int>& batteryPercentages) {
+        int ans = 0, decrement = 0;
+        for (auto ii: batteryPercentages) {
+            if (ii > decrement) {
+                 ans ++ ;
+                decrement ++;
+            }
+        }
+        return ans;
+    }
+};
+
+```
+b.solution: just need to count the number of index that satisfied the condition:
+        0 <= i < variables.length
+        ((ai^bi % 10)^ci) % mi == target
+
+source code:
+```
 
 class Solution {
 public:
@@ -25,3 +54,72 @@ public:
         return ans;
     }
 };
+
+```
+
+c. problem: we need to count the number of subarrays where the maximum element of nums appears at least k times in that subarray.
+solution: sliding window. 
+
+
+source code:
+```
+
+class Solution {
+public:
+    long long countSubarrays(vector<int> nums, int k) {
+        int mx = 0;
+        for (auto ii: nums) mx = max(mx, ii);
+        long long ans = 0, n = nums.size() ;
+        vector <int> idx;
+        for (int i=0;i<n;++i) {
+            if (nums[i]==mx) {
+                idx.push_back(i);
+            }
+            if (int(idx.size()) > k) idx.erase(idx.begin());
+            if (int(idx.size()) == k) {
+                ans += idx[0]+1;
+            }
+        }
+        return ans;
+    }
+};
+
+```
+
+d. problem: count the total number of good partition where  one or more contiguous subarrays is called good if no two subarrays contain the same number.
+solution: 
+see this sample 
+[1 2 1 3] = [1,3]
+[1, 2, 3, 4, 1] = [1]
+[1,2,1,3,3,4,3] = [1, 3]
+
+we need to convert the left array by right array then the will be no duplicate element.
+Now we just need to count the number of element of our array.
+the answer will be: pow(2, array.length-1) % 1e9+7.
+
+source code:  
+```
+
+class Solution {
+public:
+    int numberOfGoodPartitions(vector<int>& nums) {
+        unordered_map <int, int> cnt, cnt2;
+        for (auto i: nums) cnt[i] += 1;
+        int partition = 0, mod = 1e9+7, outside_connector = 0;
+        for (int ii: nums) {
+            if (cnt2[ii]==0) ++outside_connector;
+            cnt2[ii] += 1;
+            if (cnt2[ii] == cnt[ii]) --outside_connector;
+            if (outside_connector==0) ++partition;
+        }
+        int ans = 1;
+        for (int i=1;i<partition;++i) {
+            ans = ans + ans;
+            if (ans >= mod) ans -= mod;
+        }
+        return ans;
+    }
+};
+```
+
+
