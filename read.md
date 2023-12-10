@@ -1,3 +1,5 @@
+# Leetcode Weekly Round 375
+
 a. solution: you just need to traverse the whole array from left to right.
 check the condition: nums[i] - previousTestedDevices > 0 
     then increment the previousTestedDevices.
