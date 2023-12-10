@@ -4,6 +4,8 @@ check the condition: nums[i] - previousTestedDevices > 0
 Finally the answer will be previousTestDevices.
 
 source code:
+```
+
 class Solution {
 public:
     int countTestedDevices(vector<int>& batteryPercentages) {
@@ -18,11 +20,14 @@ public:
     }
 };
 
+```
 b.solution: just need to count the number of index that satisfied the condition:
         0 <= i < variables.length
-        ((aibi % 10)ci) % mi == target
+        ((ai^bi % 10)^ci) % mi == target
 
 source code:
+```
+
 class Solution {
 public:
     int bigmod(int a, int p, int m) {
@@ -48,12 +53,15 @@ public:
     }
 };
 
+```
 
 c. problem: we need to count the number of subarrays where the maximum element of nums appears at least k times in that subarray.
 solution: sliding window. 
 
 
-source code: 
+source code:
+```
+
 class Solution {
 public:
     long long countSubarrays(vector<int> nums, int k) {
@@ -74,6 +82,7 @@ public:
     }
 };
 
+```
 
 d. problem: count the total number of good partition where  one or more contiguous subarrays is called good if no two subarrays contain the same number.
 solution: 
@@ -84,9 +93,10 @@ see this sample
 
 we need to convert the left array by right array then the will be no duplicate element.
 Now we just need to count the number of element of our array.
-the answer will be: pow(2, array.length) % 1e9+7.
+the answer will be: pow(2, array.length-1) % 1e9+7.
 
 source code:  
+```
 
 class Solution {
 public:
@@ -108,5 +118,6 @@ public:
         return ans;
     }
 };
+```
 
 
