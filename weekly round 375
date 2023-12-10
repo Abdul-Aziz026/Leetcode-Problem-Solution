@@ -1,0 +1,18 @@
+a. solution: you just need to traverse the whole array from left to right and check the condition: nums[i] - previousTestedDevices > 0 then increment the previousTestedDevices.
+Finally the answer will be previousTestDevices.
+solutin:
+``
+class Solution {
+public:
+    int countTestedDevices(vector<int>& batteryPercentages) {
+        int ans = 0, decrement = 0;
+        for (auto ii: batteryPercentages) {
+            if (ii > decrement) {
+                 ans ++ ;
+                decrement ++;
+            }
+        }
+        return ans;
+    }
+};
+``
