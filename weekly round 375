@@ -25,18 +25,17 @@ b.solution: just need to count the number of index that satisfied the condition:
 source code:
 class Solution {
 public:
-    int bigmod(int a, int p, int m) { 
-        int ans = 1 ; 
-        while (p > 0) { 
-            if (p & 1) { 
-                ans = (ans * a) % m ; 
+    int bigmod(int a, int p, int m) {
+        int ans = 1 ;
+        while (p > 0) {
+            if (p & 1) {
+                ans = (ans * a) % m ;
             }
-            a = (a * a) % m ; 
-            p >>= 1 ; 
-        } 
+            a = (a * a) % m ;
+            p >>= 1 ;
+        }
         return ans ;
     }
-
     vector<int> getGoodIndices(vector<vector<int>>& variables, int target) {
         int idx = 0;
         vector <int> ans;
@@ -87,7 +86,8 @@ we need to convert the left array by right array then the will be no duplicate e
 Now we just need to count the number of element of our array.
 the answer will be: pow(2, array.length) % 1e9+7.
 
-source code: 
+source code:  
+
 class Solution {
 public:
     int numberOfGoodPartitions(vector<int>& nums) {
