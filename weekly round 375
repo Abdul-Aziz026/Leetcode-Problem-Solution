@@ -1,6 +1,9 @@
-a. solution: you just need to traverse the whole array from left to right and check the condition: nums[i] - previousTestedDevices > 0 then increment the previousTestedDevices.
+a. solution: you just need to traverse the whole array from left to right.
+check the condition: nums[i] - previousTestedDevices > 0 
+    then increment the previousTestedDevices.
 Finally the answer will be previousTestDevices.
-solutin:
+
+source code:
 ``
 class Solution {
 public:
